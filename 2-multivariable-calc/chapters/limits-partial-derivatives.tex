@@ -1,0 +1,46 @@
+\section{Limits and partial derivatives}
+
+\defBox{Open and closed balls in $\mathbb{R}$}{
+    An open ball in $\mathbb{R}$ is a set in the form: 
+
+    $$
+    B = \{(x, y) \in \realxreal | (x - a)^2 + (y - b)^2 < t^2 \}
+    $$
+
+    A closed ball in  $\mathbb{R}$ is a set in the form:
+
+    $$
+    B = \{(x, y) \in \realxreal | (x - a)^2 + (y - b)^2 \leq t^2 \}
+    $$
+}
+
+A point (x, y) in a subset T of $\realxreal$ is called an interior point if (x, y) is the center of 
+an open ball that is a subset of T. The interior of a subset X of $\realxreal$ is the set of all interior 
+points of X. We denote this by $Int(X)$.
+
+A point (x, y) is a boundary point of a subset W of $\realxreal$ if \textbf{every} open ball with center 
+(x, y) contains points that are not in W and also contains points that are in W. The boundary of W is 
+the set of all boundary points of W. We denote this by $Bdy(W)$. 
+
+We say that a subset G of $\realxreal$ is open iff $Int(G) = G$
+
+We say that a subset Z of $\realxreal$ is closed iff $Bdy(Z)$ is a subset of Z. This means that if Z is closed, 
+then every boundary point of Z is an element of Z. 
+
+We say that a subset T of $\realxreal$ is bounded if it is a subset of an open ball. 
+
+\defBox{Curve and graph of of $f$}{
+    Suppose $f: \realxreal \to \R$ is a function, then: 
+
+    The curve of the function is defined as the following set: 
+
+    $$
+    C_w = \{(x, y) \in \realxreal | f(x, y) = w\}
+    $$
+
+    The graph of the function is defined as the following set: 
+
+    $$
+    G = \{(x, y, z) \in \R^3 | (x, y) \in \text{domain of $f$, and } z = f(x, y)\}
+    $$
+}

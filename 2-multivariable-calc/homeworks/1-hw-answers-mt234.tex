@@ -1,0 +1,363 @@
+\documentclass[12pt]{article} % use the article class
+
+\input{../../preamble.tex} 
+\input{../class-specific.tex}
+
+\title{
+    \vspace{2in}
+        \textmd{\textbf{\classTitle}}\\
+    \vspace{1in}
+    \textmd{\textbf{Homework \#1}}\\
+    \vspace{1in}
+}
+
+\author{
+    \hmwkAuthorName\\
+    \hmwkStudentnum\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+%% Question 1
+\begin{homeworkProblem}
+    \hBox{
+
+        $$
+            f(x, y) = 3 - \frac{10}{\sqrt{3 - x + 2y}}
+        $$
+
+        \begin{enumerate}
+            \item Find the domain and the range of $f$
+            \item Find the boundary and the interior of the domain
+            \item Is the domain open, closed, bounded, or unbounded?
+        \end{enumerate}
+
+    }
+
+    Note: For this question, let D = Domain of f, and A = Range of f
+
+    \subsection*{Part 1}
+
+    The domain is the set of all possible inputs. Because there is a fraction, the function will be undefined when the
+    denominator is 0.
+
+    Because there is a square root, and our function is in the reals, the function will also be undefined when the inside the
+    square root is negative, as that will have no answer in the reals.
+
+    Therefore, the function is undefined when: $3 - x + 2y \leq 0$
+
+    \begin{align*}
+        D & = \{(x, y) \in \realxreal \mid 3 - x + 2y > 0\}      \\
+          & = \{(x, y) \in \realxreal \mid y > \frac{x - 3}{2}\} \\
+    \end{align*}
+
+    The range of $f$ is $(-\infty, 3)$, this is because the fraction can never yield a negative value since both the enumerator, and the
+    denominator are strictly greater than 0. Therefore, the range of the fraction is $(0, \infty)$
+
+    \subsection*{Part 2}
+
+    The boundary of the domain of $f$ (which we let be $D$) is every $(x, y)$ such that if $(x, y)$ is the center of any open ball, the the open ball will
+    contain points inside and outside $D$
+
+    Let $B = \{(x, y) \in \realxreal \mid 3 - x + 2y = 0\}$
+
+    \textbf{Claim}: $B = Bdy(D)$
+
+    Take $(x_0, y_0) \in B$, and let $r > 0$ be any real number.
+
+    We must show that any open ball with radius $r$ will have points inside and also outside $D$.
+
+    The equation of said open ball can be given by:
+
+    $$
+        O = \{(x, y) \in \realxreal | (x - x_0)^2 + (y - y_0)^2 < r^2\}
+    $$
+
+    Now we need to show, that there exists an element in $O$ that is also in $D$.
+
+    Take $(a,b) = (x_0 - \frac{r}{2}, y_0 + \frac{r}{2})$, by the definition of $O$, $(a, b) \in O$ iff $(a - x_0)^2 + (b - y_0)^2 < r^2$
+
+    \begin{align*}
+        (a - x_0)^2 + (b - y_0)^2
+         & = (x_0 - \frac{r}{2} - x_0)^2 + (y_0 + \frac{r}{2} - y_0)^2 < r^2 \\
+         & = (-\frac{r}{2})^2 + (\frac{r}{2})^2 < r^2                        \\
+         & = \frac{r^2}{2}                                                   \\
+         & < r^2                                                             \\
+    \end{align*}
+
+    Now that we have shown that $(a, b) \in O$, we need to show that $(a, b) \in D$.
+    By the definition of $D$, we know that $(a, b) \in D$ iff $3 - a + 2b > 0$.
+
+    \begin{align*}
+        3 - a + 2b
+         & = 3 - (x_0 - \frac{r}{2}) + 2(y_0 + \frac{r}{2}) \\
+         & =  3 - x_0 + \frac{3r}{2} + 2y_0                 \\
+    \end{align*}
+
+    Because we know that $(x_0, y_0) \in D$, we know that
+
+    $$
+        3 - x_0 + 2y_0 < 0
+    $$
+
+    This means that
+
+    $$
+        3 - x_0 + 2y_0 + \frac{3r}{2} < 0 \quad \forall r > 0
+    $$
+
+    Meaning that for any $r > 0$, $(a, b) \in D$.
+
+    We have shown that any ball with center $(x_0, y_0) \in B$ will contain at least one element in $D$
+
+    Now we must show that there is an element $(c, d) \in B$ such that $(c, d) \in O$, and $(c, d) \not \in D$.
+
+    To do this, take that same open ball, and let $(c, d) = (x_0 + \frac{r}{2}, y_0 - \frac{r}{2})$.
+
+    $(c, d) \in O$ iff $(c - x_0)^2 + (d - y_0)^2 < r^2$
+
+    \begin{align*}
+        (c - x_0)^2 + (d - y_0)^2
+         & = (x_0 + \frac{r}{2} - x_0)^2 + (y_0 - \frac{r}{2} - y_0)^2 \\
+         & = (\frac{r}{2})^2 + (-\frac{r}{2})^2                        \\
+         & = \frac{r^2}{2}                                             \\
+         & < r^2                                                       \\
+    \end{align*}
+
+    Therefore, $(c, d) \in O$. Now we need to show it is not in $D$.
+
+    $(c, d) \in D$, iff $3 - c + 2d > 0$ is true, however
+
+    \begin{align*}
+        3 - c + 2d
+         & = 3 -(x_0 + \frac{r}{2}) + 2 (y_0 - \frac{r}{2}) \\
+         & = 3 - x_0 - \frac{r}{2} + 2y_0 - r               \\
+         & = 3 - x_0 + 2y_0 - \frac{3r}{2}
+    \end{align*}
+
+    And because $(x_0, y_0) \in B$, we know that $3 - x_0 + 2y_0 = 0$, therefore
+
+    $$
+        3 - c + 2d = 0 - \frac{3r}{2} < 0
+    $$
+
+    Since it is smaller than 0, it doesn't meet the requirement to be in $D$, therefore $(c, d) \not \in D$.
+
+    Therefore, any open ball with a center $(x, y) \in B$ will contain points both in $D$ and not in $D$. Therefore, every point
+    in $B$ is a boundary point. So we have shown that $B = Bdy(D)$.
+
+    \textbf{Claim}: $Int(D) = D$
+
+
+
+    We know that $D \cap Bdy(D) = \emptyset$, as if there was an element $(x, y) \in D \cap Bdy(D)$, then
+    $3 - x + 2y > 0$ would be true (because its in $D$), and also $3 - x + 2y = 0$ would be true (because its in $Bdy(D)$),
+    but it isn't possible for something to be bigger than 0, but also 0.
+
+    Take an element $(x, y) \in R^2$. If $(x, y) \not \in D$, then any open ball
+    with a center $(x, y)$ will not be an element of $Int(D)$, as at least one element in the open ball
+    is not in $D$, therefore, if $(x, y) \not \in D \implies (x, y) \not \in Int(D)$
+
+    Let $(x, y) \in D$. Then, $(x, y) \not \in Bdy(D)$, and so $(x, y) \in Int(D)$ (since it isn't in $Bdy(D)$, we know that there exists an open ball around $(x, y)$ such that every element in the open ball is also in $D$).
+
+    We have shown that if $(x, y) \in D$, then $(x, y) \in Int(D)$, and that if $(x, y) \not \in D$, then $(x, y) \not \in Int(D)$, therefore $Int(D) = D$
+
+    \subsection*{Part 3}
+
+    We know that a subset W of the $\realxreal$ is open iff $Int(W) = W$. We showed in the last part that $Int(D) = D$, therefore, $D$ is open.
+
+    To show that $D$ is not closed, we need to find a point in $Bdy(D) \not \in D$.
+
+    Take the point $(5, 1)$, this point is an element of $Bdy(D)$ since $3 - 5 + 2(1) = 0$, it however is not an element of
+    $D$, as $3 - 5 + 2(1) \not > 0$. Because of this, $Bdy(D) \not \subset D$, and $D$ is therefore not closed.
+
+    $D$ is unbounded as it is not the subset of any open ball. This can be proven by contradiction.
+
+    Assume that there exist an open ball $P$ with radius $r > 0$ such that $D \subset P$.
+
+    Let the center of the ball be given by $(p_x, p_y)$, then, because it is a ball, the highest point is at $(p_x, p_y + r)$.
+
+    Now, if we find an element in $D$ with a $y$ coordinate larger than $p_y + r$, we know that that element cannot be in $P$.
+
+    Take the element $(2(p_y + 2r), p_y + 2r)$, this element will be in $D$ since
+
+    $$
+        3 - 2(p_y + 2r) + 2(p_y + 2r) = 3 > 0
+    $$
+
+    We assumed that $D \subset P$, but then we found an element inside $D$ that is not in $P$, this is a contradiction, indicating that $D \not \subset P$.
+
+    Because of this, we know that $D$ is unbounded.
+
+
+\end{homeworkProblem}
+
+\pagebreak
+
+%Question 2
+\begin{homeworkProblem}
+
+    \hBox{
+        Find the following limit:
+
+        $$
+            \lim_{(x, y) \to (0, -1)} \frac{x^3 - y^2}{2x^5 + 2y^3 - 5}
+        $$
+    }
+
+    \begin{align*}
+        \lim_{(x, y) \to (0, -1)} \frac{x^3 - y^2}{2x^5 + 2y^3 - 5}
+         & =  \frac{\lim_{(x, y) \to (0, -1)}x^3 - y^2}{\lim_{(x, y) \to (0, -1)} 2x^5 + 2y^3 - 5} \\
+         & = \frac{-1}{-7}                                                                         \\
+         & = \frac{1}{7}
+    \end{align*}
+
+\end{homeworkProblem}
+
+\pagebreak
+
+%Question 3
+\begin{homeworkProblem}
+
+    Are the following statements true ?
+
+    \subsection*{Part 1}
+    \hBox{
+        If $w$ satisfies $0 \leq 4w < \frac{r^3}{4}$ $\forall r > 0$, then $w = 0$
+    }
+
+    Yes. We can prove this by contradiction, assume that $w$ is a real number greater but not equal to 0 ($w > 0$),
+    and let $r = w$.
+
+    \begin{align*}
+        0 \leq 4w  & < \frac{r^3}{4} = \frac{w^3}{4} \\
+        0 \leq 16w & < w^3
+    \end{align*}
+
+    The above implies that $4 < w$. However, if $w > 4$, then the initial equation is not satisfied for all $r > 0$,
+    for example, for $r = 1$
+
+    $$
+        0 \leq 4w < \frac{1^3}{4}
+    $$
+
+    The above is not true for any value of w greater than 4, and so this is a contradiction. The assumption we made was that
+    there exists $w > 0$, therefore $w$ can only be 0.
+
+    \subsection*{Part 2}
+    \hBox{
+        For all subsets $A, B$ in $\realxreal$
+
+        $$
+            Bdy(A \cup B) = Bdy(A) \cup Bdy(B)
+        $$
+    }
+
+    To show that it is not true for all subsets $A, B$ of $\realxreal$, we need to find a counter example.
+
+    Take $A$ to be defined as follows:
+
+    $$
+        A := \{(0, 0)\}
+    $$
+
+    And $B$ to be $\realxreal - \{(0, 0)\}$.
+
+    The boundary points of $A$ are $\{(0, 0)\}$, and the boundary points of $B$ are $\{(0, 0)\}$,
+    however, $A \cup B = \realxreal$, which has no boundary points. Therefore $Bdy(A \cup B) \not= Bdy(A) \cup Bdy(B)$
+
+
+
+
+\end{homeworkProblem}
+
+\pagebreak
+
+%% Question 4
+\begin{homeworkProblem}
+
+    \hBox{
+        Does the following limit exist ?
+
+        $$
+            \lim_{(x, y) \to (0, 0)} \frac{y^4 - x^8}{x^8 + y^4}
+        $$
+    }
+
+    The limit does not exist, we can show this by finding the limit from different paths.
+
+    \subsection*{Path 1}
+    Let $(x, y)$ approach from the $y-axis$, meaning that we need to find the limit when $x = 0$, and $y$ approaches (but is not) 0.
+
+
+    $$
+        \lim_{(x, y) \to (0, 0)} \frac{y^4 - 0^8}{0^8 + y^4} = 1
+    $$
+
+    \subsection*{Path 2}
+    Let $(x, y)$ approach from the $x-axis$, meaning that we need to find the limit when $y = 0$, and $x$ approaches (but is not) 0.
+
+    $$
+        \lim_{(x, y) \to (0, 0)} \frac{0^4 - x^8}{x^8 + 0^4} = -1
+    $$
+
+    Therefore, since the limit will approach different values depending on which path is taken, we know that the limit does not exist.
+
+
+\end{homeworkProblem}
+
+\pagebreak
+
+% Question 5
+\begin{homeworkProblem}
+    \hBox{
+        Prove the following:
+
+        $$
+            \lim_{(x, y) \to (0, 0)} \frac{3 y^2 x^2}{5 y^2 + x^4} = 0
+        $$
+    }
+
+    To prove the above, we will use an epsilon delta poof. Let $\epsilon > 0$, we need to show that $\exists \delta > 0$ such that:
+
+    \begin{equation*}
+        0 < \sqrt{x^2 + y^2} < \delta \implies \frac{3 y^2 x^2}{5 y^2 + x^4} < \epsilon
+    \end{equation*}
+
+    Take $\delta = \sqrt{\epsilon}$, then:
+
+    \begin{align*}
+        0 < \sqrt{x^2 + y^2}                    & < \delta            \\
+        0 < \sqrt{x^2 + y^2}                    & < \sqrt{\epsilon}   \\
+        0 < x^2 + y^2                           & < \epsilon          \\
+        0 < x^2 \leq x^2 + y^2                  & < \epsilon          \\
+        0 < x^2 \cdot \frac{3 y^2}{5 y^2 + x^4} & \leq x^2 < \epsilon \\
+        0 < \frac{3 y^2 x^2}{5 y^2 + x^4}       & < \epsilon          \\
+    \end{align*}
+
+    Note: We know the 4th line in the equations above because $y^2, x^4 \geq 0 \quad \forall x, y \in \R$, $3y^2 \leq 5y^2 + x^4$
+
+    $$
+        \therefore \frac{3y^2}{5y^2 + x^4} \leq 1 \implies x^2 \cdot \frac{3 y^2}{5 y^2 + x^4} \leq x^2
+    $$
+
+    And so we have shown that for any epsilon, there exist a positive value for delta such that:
+    \begin{equation*}
+        0 < \sqrt{x^2 + y^2} < \delta \implies \frac{3 y^2 x^2}{5 y^2 + x^4} < \epsilon
+    \end{equation*}
+
+    Meaning that:
+
+    $$
+        \lim_{(x, y) \to (0, 0)} \frac{3 y^2 x^2}{5 y^2 + x^4} = 0
+    $$
+\end{homeworkProblem}
+
+
+\end{document}

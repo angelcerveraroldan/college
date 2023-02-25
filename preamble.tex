@@ -1,0 +1,143 @@
+\usepackage[plain]{algorithm} % algorithms package
+\usepackage{algpseudocode} % pseudo-code package
+\usepackage{amsbsy} % for producing bold maths symbols
+\usepackage{amsfonts} % an extended set of fonts for maths
+\usepackage{amssymb} % various maths symbols
+\usepackage{amsthm} % for producing theorem-like environments
+\usepackage{datetime2} % managing dates and times
+\usepackage{delimseasy} % makes easy the manual sizing of brackets, square brackets, and curly brackets
+\usepackage{enumitem} % customing list environments
+\usepackage{extramarks} % extra marks
+\usepackage{fancyhdr} % headers and footers
+\usepackage{float} % makes dealing with floats (e.g. tables and figures) easier
+\usepackage{framed} % for producing framed boxes
+\usepackage{graphicx} % for including graphics in the document
+\usepackage{hyperref} % automatically produce hyperlinks for cross-references
+\usepackage{import} % Import and subimport
+\usepackage{listings} % Code blocks
+\usepackage{mathtools} % package for maths (fixes some deficiences of amsmath so is preferred)
+\usepackage{mdframed} % boxes
+\usepackage{microtype} % better font sizing (extremely helpful with long equations!)
+\usepackage{newtx} % a fonts package
+\usepackage{parskip}
+\usepackage{pdfpages} % for including pdf documents inside the compiled pdf
+\usepackage{pgf} % produce pdf graphics using LaTeX
+\usepackage{pgfplots} % create normal/logarithmic plots in two and three dimensions
+\pgfplotsset{compat=1.18} % sorts out the compatability warning
+\usepackage{physics} % useful for vector calculus and linear algebra symbols
+\usepackage[most]{tcolorbox} % for producing coloured boxes
+\tcbuselibrary{theorems} % theorems with tcolorbox
+\usepackage{tikz-3dplot} % for producing 3d plots
+\usepackage{tikz} % for drawing graphics in LaTeX
+\usepackage{tkz-base} % drawing with a Cartesian coordinate system
+\usepackage{tkz-euclide} % drawing in Euclidean geometry
+\usepackage{xcolor} % a package for colours
+
+
+%%% DOCUMENT SETTINGS
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\linespread{1.1}
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{}
+\rhead{\hmwkStudentnum}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+\setlength\parindent{0pt}
+
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\} % part macro
+\newcommand{\solution}{\textbf{\large Solution}} % solution macro
+
+\newmdenv[
+    backgroundcolor=gray!20,
+    skipabove=\topsep,
+    skipbelow=\topsep,
+]{grayBoxed}
+
+% General writing
+\newcommand{\bracket}[1]{\left(#1\right)} % for automatic resizing of brackets
+\newcommand{\sbracket}[1]{\left[#1\right]} % for automatic resizing of square brackets
+\newcommand{\mset}[1]{\left\{#1\right\}} % for automatic resizing of curly brackets
+\newcommand{\defeq}{\coloneqq} % the "defined as" command
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}} % uppercase roman numerals
+
+\newcommand{\rednote}[1]{{\color{red} #1}} % for red text
+\newcommand{\bluenote}[1]{{\color{blue} #1}} % for blue text
+\newcommand{\greennote}[1]{{\color{green} #1}} % for green text
+
+% Blackboard Maths Symbols
+\newcommand{\N}{\mathbb{N}} % natural numbers
+\newcommand{\Q}{\mathbb{Q}} % rational numbers
+\newcommand{\Z}{\mathbb{Z}} % integers
+\newcommand{\R}{\mathbb{R}} % real numbers
+\newcommand{\C}{\mathbb{C}} % complex numbers
+\newcommand{\E}{\mathbb{E}} % expectation operators
+
+% Aesthetic
+\newcommand{\thmBox}[2]{
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!50!black,
+            colbacktitle=blue!90!black,title=Theorem #1]
+        #2
+    \end{tcolorbox}
+}
+
+\newcommand{\lmBox}[2]{
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!50!black,
+            colbacktitle=blue!50!black,title=Lemma #1]
+        #2
+    \end{tcolorbox}
+}
+
+\newcommand{\defBox}[2]{
+    \begin{tcolorbox}[colback=red!5!white,colframe=red!50!black,
+            colbacktitle=red!60!black,title=Definition #1]
+        #2
+    \end{tcolorbox}
+}
+
+% Homework Specific
+\newcommand{\hBox}[1]{
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!50!black]
+        #1
+    \end{tcolorbox}
+}
+
+\newcommand{\hmwkStudentnum}{21319203}
+\newcommand{\hmwkAuthorName}{\textbf{Angel Cervera Roldan}}
+
+%%% Define the homeworkProblem environment
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}

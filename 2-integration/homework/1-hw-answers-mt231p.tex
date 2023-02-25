@@ -1,0 +1,353 @@
+\documentclass[12pt]{article} % use the article class
+
+\input{../../preamble.tex} 
+\input{../class-specific.tex}
+
+\newcommand*{\halfpi}{\frac{\pi}{2}}
+
+\title{
+    \vspace{2in}
+        \textmd{\textbf{\classTitle}}\\
+    \vspace{1in}
+    \textmd{\textbf{Homework \#1}}\\
+    \vspace{1in}
+}
+
+\author{
+    \hmwkAuthorName\\
+    \hmwkStudentnum\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+% Problem 1
+\begin{homeworkProblem}
+    \begin{align*}
+        \cos{(x - \halfpi)}
+         & = \cos(x)\cos(-\halfpi) - \sin(x)\sin(-\halfpi) \\
+         & = \cos(x) \cdot 0 - \sin(x) \cdot (-1)          \\
+         & = \sin(x)
+    \end{align*}
+
+    \begin{align*}
+        \cos{(x + \frac{\pi}{2})}
+         & = \cos(x)\cos(\halfpi) - \sin(x)\sin(\halfpi) \\
+         & = \cos(x) \cdot 0 - \sin(x) \cdot (1)         \\
+         & = - \sin(x)
+    \end{align*}
+
+    \begin{align*}
+        \sin{(x - \halfpi)}
+         & = \sin(x)cos(-\halfpi) + \cos(x)\sin(-\halfpi) \\
+         & = \sin(x) \cdot 0 + \cos(x) \cdot (-1)         \\
+         & = -\cos(x)
+    \end{align*}
+
+    \begin{align*}
+        \sin{(x + \halfpi)}
+         & = \sin(x)cos(\halfpi) + \cos(x)\sin(\halfpi) \\
+         & = \sin(x) \cdot 0 + \cos(x) \cdot (1)        \\
+         & = \cos(x)
+    \end{align*}
+
+    \begin{align*}
+        \cos{(x - \pi)}
+         & = \cos(x)\cos(-\pi) - \sin(x)\sin(-\pi) \\
+         & = \cos(x) \cdot (-1) - \sin(x) \cdot 0  \\
+         & = -\cos(x)
+    \end{align*}
+
+    \begin{align*}
+        \cos{(x + \pi)}
+         & = \cos(x)\cos(\pi) - \sin(x)\sin(\pi)  \\
+         & = \cos(x) \cdot (-1) - \sin(x) \cdot 0 \\
+         & = -\cos(x)
+    \end{align*}
+
+    \begin{align*}
+        \sin{(x - \pi)}
+         & = \sin(x)\cos(-\pi) + \cos(x)\sin(-\pi) \\
+         & = \sin(x) \cdot (-1) + \cos(x) \cdot 0  \\
+         & = -\sin(x)
+    \end{align*}
+
+    \begin{align*}
+        \sin{(x + \pi)}
+         & = \sin(x)\cos(\pi) + \cos(x)\sin(\pi)  \\
+         & = \sin(x) \cdot (-1) + \cos(x) \cdot 0 \\
+         & = -\sin(x)
+    \end{align*}
+
+    \begin{align*}
+        \cos{(x - \frac{3\pi}{2})}
+         & = \cos(x - \pi - \halfpi)                                         \\
+         & = \cos(x - \pi) \cos(-\halfpi) - \sin(x - \pi) \sin(-\halfpi) & * \\
+         & = - \cos(x) \cdot 0 + \sin(x) \cdot (-1)                          \\
+         & = -\sin(x)                                                        \\
+    \end{align*}
+
+    \begin{align*}
+        \cos{(x + \frac{3\pi}{2})}
+         & = \cos(x + \pi + \halfpi)                                       \\
+         & = \cos(x + \pi) \cos(\halfpi) - \sin(x + \pi) \sin(\halfpi) & * \\
+         & = - \cos(x) \cdot 0 + \sin(x) \cdot (1)                         \\
+         & = \sin(x)                                                       \\
+    \end{align*}
+
+    \begin{align*}
+        \sin{(x - \frac{3\pi}{2})}
+         & = \sin(x - \pi - \halfpi)                                         \\
+         & = \sin(x - \pi) \cos(-\halfpi) + \cos(x - \pi) \sin(-\halfpi) & * \\
+         & = - \sin(x) \cdot 0 - \cos(x) \cdot (-1)                          \\
+         & = \cos(x)
+    \end{align*}
+
+    \begin{align*}
+        \sin{(x + \frac{3\pi}{2})}
+         & = \sin(x + \pi + \halfpi)                                       \\
+         & = \sin(x + \pi) \cos(\halfpi) + \cos(x + \pi) \sin(\halfpi) & * \\
+         & = - \sin(x) \cdot 0 - \cos(x) \cdot (1)                         \\
+         & = - \cos(x)
+    \end{align*}
+
+    *
+    We had found the values of $\cos(x - \pi)$,  $\cos(x + \pi)$, $\sin(x - \pi)$, and $\sin(x + \pi)$ earlier in this question,
+    so I replaced it for what we found earlier.
+
+\end{homeworkProblem}
+
+\pagebreak
+
+% Problem 2
+\begin{homeworkProblem}
+
+    \hBox{
+        Find the inverse of the following function:
+
+        $$
+            f(x)= x^2 - 2bx
+        $$
+
+        Where $b$ is a positive constant such that $b \geq x$.
+    }
+
+    To find the inverse, we will start by manipulating the original function until
+    there is only one x. To do this we will try to find the value of $a, c$ such that $f(x) = (x + a)^2 + c$
+
+    \begin{align*}
+        f(x) & = x^2 - 2bx           \\
+             & = (x + a)^2 + c       \\
+             & = x^2 + 2xa + a^2 + c \\
+    \end{align*}
+
+    Therefore:
+
+    \begin{align*}
+        2xa           & = -2bx   \\
+        \Rightarrow a & = -b     \\
+        a^2 + c       & = 0      \\
+        \Rightarrow c & = -(b)^2
+    \end{align*}
+
+    Now that we have found the values for $a, c$, lets verify that they actually work.
+
+    \begin{align*}
+        f(x) & = (x - b)^2 - b^2       \\
+             & = x^2 - 2bx + b^2 - b^2 \\
+             & = x^2 - 2bx             \\
+    \end{align*}
+
+    And so those values work. Now we can find its inverse easier:
+
+    \begin{align*}
+        f(x)                  & = (x - b)^2 - b^2     \\
+        f(x) + b^2            & = (x - b)^2           \\
+        \sqrt{f(x) + b^2}     & = \pm (x - b)         \\
+        \sqrt{f(x) + b^2}     & = - (x - b)       & * \\
+        \sqrt{f(x) + b^2} - b & = - x                 \\
+        b - \sqrt{f(x) + b^2} & = x                   \\
+    \end{align*}
+
+    Note that we only keep the negative sign as $b \geq x$, and so $(x - b)$ will always be negative.
+    However, it must equal $\sqrt{f(x) + b^2}$, which cannot be negative number.
+
+    \subsection*{Answer}
+    $$
+        f^{-1}(x) = b - \sqrt{x + b^2}
+    $$
+
+    To verify that that's actually the inverse, we need to show that $f(f^{-1}(x)) = f^{-1}(f(x)) = x$
+
+    \begin{align*}
+        f(f^{-1}(x))
+         & = f(b - \sqrt{x + b^2})                                      \\
+         & = (b - \sqrt{x + b^2})^2 - 2b(b - \sqrt{x + b^2})            \\
+         & = b^2 - 2b\sqrt{x + b^2} + x + b^2 - 2b^2 + 2b\sqrt{x + b^2} \\
+         & = x - 2b\sqrt{x + b^2} + 2b\sqrt{x + b^2} +  2b^2 - 2b^2     \\
+         & = x
+    \end{align*}
+
+    \begin{align*}
+        f^{-1}(f(x))
+         & = b - \sqrt{f(x) + b^2}      \\
+         & = b - \sqrt{x^2 - 2bx + b^2} \\
+         & = b - \sqrt{(x - b)^2}       \\
+         & = b - x - b                  \\
+         & = x
+    \end{align*}
+
+    And because both $f(f^{-1}(x))$ and $f^{-1}(f(x))$ are equal to $x$, $f(f^{-1}(x)) = f^{-1}(f(x))$
+
+\end{homeworkProblem}
+
+\pagebreak
+
+% Problem 3
+\begin{homeworkProblem}
+
+    \hBox{
+        Find:
+
+        $$
+            \lim_{x \to 0} \frac{1 - \cos{x}}{x\sin{x}}
+        $$
+    }
+
+    \begin{align*}
+        \frac{1 - \cos{x}}{x\sin{x}}
+         & = \frac{1 - \cos^2{x}}{x\sin{x}(1 + \cos{x})}                 \\
+         & = \frac{sin^2{x}}{x\sin{x}(1 + \cos{x})}                      \\
+         & = \frac{sin{x}}{x(1 + \cos{x})}                               \\
+         & = \frac{sin{x}}{x} \cdot \frac{1}{1 + \cos{x}}                \\
+        \therefore
+        \lim_{x \to 0} \frac{1 - \cos{x}}{x\sin{x}}
+         & = \lim_{x \to 0} \frac{sin{x}}{x} \cdot \frac{1}{1 + \cos{x}} \\
+    \end{align*}
+
+    We know from class that:
+    \begin{align*}
+        \lim_{x \to 0} \frac{sin{x}}{x}      & = 1                     \\
+        \lim_{x \to 0} \frac{1}{1 + \cos{x}} & = \frac{1}{1 + \cos{0}} \\
+                                             & = \frac{1}{2}
+    \end{align*}
+
+    Therefore,
+
+    \begin{align*}
+        \lim_{x \to 0} \frac{sin{x}}{x} \cdot \frac{1}{1 + \cos{x}}
+         & = \lim_{x \to 0} \frac{sin{x}}{x} \cdot \lim_{x \to 0} \frac{1}{1 + \cos{x}} \\
+         & = 1 \cdot \frac{1}{2}                                                        \\
+         & = \frac{1}{2}                                                                \\
+    \end{align*}
+
+    And so the answer is $\frac{1}{2}$.
+\end{homeworkProblem}
+
+\pagebreak
+
+% Problem 4
+\begin{homeworkProblem}
+    \hBox{
+        Prove the following using $\epsilon-\delta$
+        $$
+            \lim_{x \to 3} \sqrt{4 - x} = 1
+        $$
+    }
+
+    To show that the limit is true, we need to show that $\forall\epsilon > 0$, $\exists\delta > 0$ such that
+
+    $$
+        0 < \abs*{x - 3} < \delta \implies  \abs{\sqrt{4 - x} - 1} < \epsilon
+    $$
+
+
+    \begin{align*}
+                                 & \abs*{\sqrt{4- x} - 1}< \epsilon             \\
+        - \epsilon             < & \sqrt{4 - x} - 1      < \epsilon             \\
+        - \epsilon + 1         < & \sqrt{4 - x}          < \epsilon + 1         \\
+        (- \epsilon + 1)^2     < & 4 - x                 < (\epsilon + 1)^2     \\
+        (- \epsilon + 1)^2 - 1 < & 3 - x                 < (\epsilon + 1)^2 - 1 \\
+    \end{align*}
+
+    Therefore:
+
+    $$
+        \abs*{3 - x} = \abs*{x - 3} < \max(\abs*{(- \epsilon + 1)^2 - 1}, \abs*{(\epsilon + 1)^2 - 1})
+    $$
+
+    And so we can let $\delta = \max(\abs*{(- \epsilon + 1)^2 - 1}, \abs*{(\epsilon + 1)^2 - 1})$. Therefore, we
+    have found a value for delta such that the limit definition is satisfied, meaning that $\lim_{x \to 3} \sqrt{4 - x} = 1$.
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    \hBox{
+        Find the asymptotes for the following function:
+
+        $$
+            f(x) = \frac{x^2 - 4}{x^2 - 4x + 3}
+        $$
+    }
+
+    The given function will have vertical asymptotes when the denominator of the function is 0, as the function will tend towards either positive or negative infinity at these points.
+    $f(x)$ can be re-written as:
+
+    $$
+        f(x) = \frac{x^2 - 4}{(x - 1) \cdot (x - 3)}
+    $$
+
+    This shows that $f$ has vertical asymptotes at $x = 3$, and at $x = 1$.
+
+    To see if there are any horizontal asymptotes we need to find what the function approaches as x goes to infinity.
+
+    $$
+        \lim_{x \to \infty} \frac{x^2 - 4}{x^2 - 4x + 3} = \lim_{x \to \infty} \frac{(x - 2) \cdot (x + 2)}{(x - 3) \cdot (x - 1)} = (\lim_{x \to \infty} \frac{x - 2}{x - 3}) \cdot (\lim_{x \to \infty} \frac{x + 2}{x - 1})= 1 \cdot 1 = 1
+    $$
+
+    Because it approaches 1, but it never reaches one, we know that there is a horizontal asymptote at $y = 1$.
+
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    \hBox{
+        At which point/s does the following function fail to be continuous?
+
+        $$
+            f(x) =
+            \begin{cases}
+                x+1                   & \text{for } x \geq 0 \\
+                \frac{x}{x^2 - x - 6} & \text{for } x < 0
+            \end{cases}
+        $$
+    }
+
+    $x + 1$ is continuous for all x, therefore, $f(x)$ is continuous $\forall x > 0$.
+
+    $f(x)$ will be continuous at $x = 0$ if the limit as x approaches 0 from both sides is the same and if it is defined at $x = 0$.
+
+    $f(0) = 1$, however, the limit from the negative side is the following:
+
+    \begin{align*}
+        \lim_{x \to 0^-} f(x)
+         & = \lim_{x \to 0} \frac{x}{x^2 - x - 6} \\
+         & = 0
+    \end{align*}
+
+    Therefore, $f(x)$ is not continuous at $x = 0$. It will also not be continuous at any points where it is undefined.
+
+    For any $x < 0$, $f(x)$ will be undefined iff $x^2 - x - 6 = 0$, using the $-b$ formula, we get that $ \frac{x}{x^2 - x - 6}$ is undefined at 3, and at -2,
+    however, $3 > 0$, so it is defined at that point.
+
+    Therefore, the function fails to be continuous only at $x = -2$ and at $x = 0$
+\end{homeworkProblem}
+
+\end{document}
