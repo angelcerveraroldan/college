@@ -1,0 +1,33 @@
+\section{Linear Independence and Span}
+
+\defBox{Linear Combination}{
+    Let $u \in V$, and $S = \{v_1, ..., v_m\}$ be a subset of $V$.
+
+    We say that $u$ is a linear combination of the set $S$ iff there exists $\lambda_1, ..., \lambda_m \in F$ such that:
+
+    $$
+        u = \sum_{i = 1}^{m} \lambda_i v_i
+    $$
+}
+
+\defBox{Span}{
+    Let $M \subseteq V$, the span of $M$ is the set of all linear combinations of finite sets of vectors from $M$,
+    mathematically:
+
+
+    $$
+        span(M) = \mset{\sum_{i = 1}^{m} \lambda_i u_i \mid m \in \N \m \lambda_i \in F \m u_i \in M \m i \leq i \leq m}
+    $$
+}
+
+For any subset $M$ of $V$, $span(M)$ is a subspace.
+
+If $M$ is a finite set of vectors $u_1, ..., u_q$, we can denote $span(M)$ as $\langle u_1, ..., u_q \rangle$. If the $span(M) = V$,
+we say that $M$ spans $V$. Lastly, we (by convention) say that $span(\emptyset) = {0}$.
+
+\lmBox{}{
+    If $S$ is a subspace of the vector space $V$, and $v_1, ..., v_q \in S$, then $\langle v_1, ..., v_1 \rangle \subseteq S$.
+}
+
+The above is true since $S$ is a vector space, therefore, it is closed under addition and under scalar multiplication.
+

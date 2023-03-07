@@ -45,7 +45,8 @@
 \pagestyle{fancy}
 \lhead{\hmwkAuthorName}
 \chead{}
-\rhead{\hmwkStudentnum}
+% \rhead{\hmwkStudentnum}
+\rhead{\MakeLowercase{\leftmark}}
 \lfoot{\lastxmark}
 \cfoot{\thepage}
 \renewcommand\headrulewidth{0.4pt}
@@ -97,6 +98,14 @@
 }
 
 \newcommand{\defBox}[2]{
+    \begin{tcolorbox}[colback=red!5!white,colframe=red!50!black,
+            colbacktitle=red!60!black,title=Definition #1]
+        #2
+    \end{tcolorbox}
+}
+
+
+\newcommand{\exerciseBox}[2]{
     \begin{tcolorbox}[colback=red!5!white,colframe=red!50!black,
             colbacktitle=red!60!black,title=Definition #1]
         #2

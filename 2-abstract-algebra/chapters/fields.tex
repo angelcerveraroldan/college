@@ -1,0 +1,34 @@
+\section{Fields}
+
+A field is a set $F$ containing at least two elements, along with two operations:
+
+\begin{itemize}
+    \item $+: F \times F \to F$
+    \item $\cdot: F \times F \to F$
+\end{itemize}
+
+that satisfies the following axioms:
+
+\begin{enumerate}
+    \item $a + b = b + a \& a \cdot b = b \cdot a \quad \forall a, b \in F$
+    \item $(a + b) + c = a + (b + c) \& (a \cdot b) \cdot c = a \cdot (b \cdot c) \quad \forall a, b \in F$
+    \item $\exists 0 \in F \st a + 0 = a \quad \forall a \in F$
+    \item $\exists 1 \in F \st a \cdot 1 = a \quad \forall a \in F$, where $0 \not = 1$
+    \item $\forall a \in F \m \exists (-a) \st a + (-a) = 0$
+    \item $\forall a \in F - \{0\} \m \exists (a^{-1}) \st a \cdot (-a) = 1$
+    \item $a \cdot (b + c) = a \cdot b + a \cdot c \quad \forall a, b, c \in F$
+\end{enumerate}
+
+
+\thmBox{}{
+    $\Z_{p}$ is the set of integers mod p, and it is a field iff p is a prime.
+}
+
+From the axioms, $\forall a, b, c \in F$ the following can be proven
+
+\begin{enumerate}
+    \item $a + b = a + c \implies b = c$
+    \item $a \not = 0 \m ab = ac \implies b = c$
+    \item $-(-a) = a$
+    \item $a \cdot 0 = 0$
+\end{enumerate}
