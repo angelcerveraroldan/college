@@ -1,0 +1,271 @@
+\documentclass[12pt]{article} % use the article class
+
+\input{../../preamble.tex} 
+\input{../class-specific.tex}
+
+\newcommand*{\halfpi}{\frac{\pi}{2}}
+
+\title{
+    \vspace{2in}
+        \textmd{\textbf{\classTitle}}\\
+    \vspace{1in}
+    \textmd{\textbf{Homework \#2}}\\
+    \vspace{1in}
+}
+
+\author{
+    \hmwkAuthorName\\
+    \hmwkStudentnum\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+% Problem 1
+\begin{homeworkProblem}
+    \hBox{
+        Find the tangent line for
+
+        \begin{enumerate}
+            \item $f(x) = \frac{8}{\sqrt{x - 2}}$ at $x = 6$
+            \item $f(x) = 4 + \cot x - 2 \csc x$ at $x = \halfpi$
+        \end{enumerate}
+    }
+
+    \subsection*{Part 1}
+
+    First we will find the rate of change of $f$ at $x = 6$
+
+    To solve the derivate, we will let $u = \sqrt{x - 2}$, then:
+
+    $$
+        \deriv{f}{x} = \deriv{f}{u} \deriv{u}{x} = (\deriv{}{u} \frac{8}{u}) (\deriv{}{x} \sqrt{x - 2})
+    $$
+
+    $$
+        \deriv{}{u} \frac{8}{u} = - \frac{8}{u^2} = - \frac{8}{\sqrt{x - 2}^2} = - \frac{8}{x - 2}
+    $$
+
+    Now, all we have left to solve is
+
+    $$
+        \deriv{}{x} \sqrt{x - 2}
+    $$
+
+    To do this, we will let $h = x - 2$, so $u(h) = \sqrt{h}$
+
+    Now, by the chain rule, we have
+
+    $$
+        \deriv{u}{x} = \deriv{u}{h} \deriv{h}{x} = \frac{1}{2 \sqrt{h}} \cdot 1 = \frac{1}{2 \sqrt{h}} = \frac{1}{2 \sqrt{x - 2}}
+    $$
+
+    So, when putting it all together, we get
+
+    $$
+        \deriv{f}{x} = (- \frac{8}{x - 2}) \cdot \frac{1}{2\sqrt{x - 2}} = - \frac{4}{(x - 2) \sqrt{x - 2}}
+    $$
+
+    To find the slope of the tangent at $x = 6$, we can evaluate the derivative we just calculated
+
+    $$
+        \deriv{f(6)}{x} = - \frac{4}{(6 - 2) \sqrt{6 - 2}} = - \frac{4}{4 \sqrt{4}} = - \frac{1}{2}
+    $$
+
+    The tangent line will be in the form:
+
+    $$
+        t(x) = mx + c = - \frac{1}{2}x + c
+    $$
+
+    To find the value of $c$, we use the fact that $f(6) = t(6)$
+
+    $$
+        f(6) = \frac{8}{\sqrt{6 - 2}} = 4 = - \frac{1}{2}(6) + c \implies c = 7
+    $$
+
+
+    Therefore, the line tangent to $f(x)$ at $x = 6$ is given by $t(x) = - \frac{1}{2}x + 7$
+
+    \pagebreak
+    \subsection*{Part 2}
+
+    First we will find the rate of change of $f$ at $x = \halfpi$
+
+    $$
+        \deriv{f}{x} = \deriv{}{x} (4 + \cot(x) - 2 \csc(x)) = 0 - \csc^2{x} + 2 \csc{x} \cot{x}
+    $$
+
+    We can simplify the equation by replacing $\csc{x}$ by $\frac{1}{\sin{x}}$ and $\cot{x}$ by $\frac{\cos{x}}{\sin{x}}$
+
+    $$
+        \deriv{f}{x} =  - \frac{1}{\sin^2{x}} + 2 \frac{1}{\sin{x}} \frac{\cos{x}}{\sin{x}} = \frac{-1 + 2\cos{x}}{\sin^2{x}}
+    $$
+
+    And if we evaluate the derivative at $x = \halfpi$, we get $\deriv{f}{x}(\halfpi) = -1$, this will be the slope of the tangent line $t(x)$.
+
+    $$
+        t(x) = -1x + c
+    $$
+
+    We can use the fact that $t(x) = f(x)$ at $x = \halfpi$ to find the value of $c$
+
+    \begin{align*}
+        t(\halfpi) & = -\halfpi + c                            \\
+        f(\halfpi) & = 4 + \cot{\halfpi} - 2\csc{\halfpi}  = 2 \\
+        2          & = -\halfpi + c                            \\
+        c          & = 2 + \halfpi
+    \end{align*}
+
+    And so the equation of the tangent line of $f$ at $x = \halfpi$ is given by $t(x) = -x + 2 + \halfpi$
+\end{homeworkProblem}
+\pagebreak
+
+
+% Problem 2
+\begin{homeworkProblem}
+    \hBox{
+        Find $\frac{dy}{dx}$ for the following functions by stating how you do substitutions:
+
+        \begin{itemize}
+            \item $y = e^{2\cos(\pi x - 1)}$
+            \item $y = (x^{-\frac{3}{4}}+ x\sin(x))^{\frac{4}{3}}$
+        \end{itemize}
+    }
+
+    \subsection*{Part 1}
+
+    To find the derivative of $y = e^{2\cos(\pi x - 1)}$, we let $u = \cos(\pi x - 1)$, then
+
+    $$
+        \deriv{y}{x} = \deriv{y}{u} \deriv{u}{x}
+    $$
+
+    Where
+
+    $$
+        \deriv{y}{u} = \deriv{}{u} e^{2u} = 2e^{2u}
+    $$
+
+    and
+
+    $$
+        \deriv{u}{x} = \deriv{}{x} \cos(\pi x - 1)
+    $$
+
+    to solve this derivative, we will once again use substitution. Let $h = \pi x - 1$
+
+    $$
+        \deriv{u}{x} = \deriv{u}{h} \deriv{h}{x}
+    $$
+
+    $$
+        \deriv{h}{x} = \deriv{}{x} \pi x - 1 = \pi
+    $$
+
+    $$
+        \deriv{u}{h} = \deriv{}{h} \cos(h) = - \sin(h) = - \sin(\pi x - 1)
+    $$
+
+    Putting it all together, we get
+
+    $$
+        \deriv{y}{x} = \deriv{y}{u} \deriv{u}{x} = \deriv{y}{u} \deriv{u}{h} \deriv{h}{x} = 2e^{2\cos(\pi x - 1)} \cdot (- \sin(\pi x - 1)) \cdot (\pi)
+    $$
+
+    Or in a slightly neater way
+
+    $$
+        \deriv{y}{x} = -2 \pi e^{2\cos(\pi x - 1)}\sin(\pi x - 1)
+    $$
+
+    \pagebreak
+
+    \subsection*{Part 2}
+
+    To find the derivative of $y = (x^{-\frac{3}{4}}+ x\sin(x))^{\frac{4}{3}}$, we let $u = x^{-\frac{3}{4}}+ x\sin(x)$, then
+
+    $$
+        \deriv{y}{x} = \deriv{y}{u} \deriv{u}{x}
+    $$
+
+    Where
+
+    $$
+        \deriv{y}{u} = \deriv{}{u} u^{\frac{4}{3}} = \frac{4}{3} u^{\frac{1}{3}} = \frac{4}{3} (x^{-\frac{3}{4}}+ x\sin(x))^{\frac{1}{3}}
+    $$
+
+    and
+
+    \begin{align*}
+        \deriv{u}{x}
+         & = \deriv{}{x} x^{-\frac{3}{4}} + x\sin(x)             \\
+         & = \deriv{}{x} x^{-\frac{3}{4}} +\deriv{}{x}  x\sin(x) \\
+         & = - \frac{3}{4} x^{-\frac{7}{4}} + \sin(x) + x\cos(x)
+    \end{align*}
+
+    And so when we put it all together, we get
+
+    $$
+        \deriv{y}{x} = \deriv{y}{u} \deriv{u}{x} = (\frac{4}{3} (x^{-\frac{3}{4}}+ x\sin(x))^{\frac{1}{3}}) (- \frac{3}{4} x^{-\frac{7}{4}} + \sin(x) + x\cos(x))
+    $$
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 3
+\begin{homeworkProblem}
+    \hBox{
+        Find $\frac{d^2y}{dx^2}$ for $y^2 = e^{x^2} + 2x$.
+    }
+
+    \begin{align}
+        y^2    & = e^{x^2} + 2x                                                                           \\
+        2 y y' & = 2xe^{x^2} + 2                                                                          \\
+        y '    & = \frac{2xe^{x^2} + 2}{2y} = \frac{xe^{x^2} + 1}{y}                                      \\
+        y ''   & = \deriv{}{x} y ' = \deriv{}{x} \frac{xe^{x^2} + 1}{y}                                   \\
+               & = \frac{y \cdot \deriv{}{x} (xe^{x^2} + 1) - (xe^{x^2} + 1) \cdot \deriv{}{x} y}{y ^ 2}  \\
+               & = \frac{y \cdot e^{x^2} (2x^2 + 1) - (xe^{x^2} + 1) \cdot y '}{y ^ 2}                    \\
+               & = \frac{y \cdot e^{x^2} (2x^2 + 1) - (xe^{x^2} + 1) \cdot \frac{xe^{x^2} + 1}{y}}{y ^ 2} \\
+               & = \frac{y^2 \cdot e^{x^2} (2x^2 + 1) - (xe^{x^2} + 1)^2}{y ^ 3}
+    \end{align}
+
+    To go from step 5 to step 6, we need the following:
+
+    \begin{align*}
+        \deriv{}{x} xe^{x^2} + 1
+         & = \deriv{}{x} xe^{x^2}                          \\
+         & = x \deriv{}{x} e^{x^2} - e^{x^2} \deriv{}{x} x \\
+         & = 2 x^2 e^{x^2} - e^{x^2}                       \\
+         & = e^{x^2} (2x^2 - 1)
+    \end{align*}
+
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 4
+
+\begin{homeworkProblem}
+    \hBox{
+        Identify the extreme points of the function $f(x) = \frac{x^4}{4} - 2x^2 + 4$, find where the curve
+        is increasing and decreasing, and sketch a rough graph for $f(x)$.
+    }
+
+    The extreme points of a function are the points where its derivative is equal to 0. Therefore, we must start by finding $\deriv{f}{x}$
+
+    $$
+        \deriv{f}{x} = \deriv{}{x} \frac{x^4}{4} - 2 \deriv{}{x} x^2 + \deriv{}{x} 4 = x^3 - 4x
+    $$
+
+    $$
+        x^3 - 4x = 0 \implies x^3 = 4x
+    $$
+
+    This means that $x = 0$ or $x^2 = 2$, therefore the possible values for $x$ are 0, 2, and -2.
+\end{homeworkProblem}
+
+\end{document}
