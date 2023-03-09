@@ -266,6 +266,56 @@
     $$
 
     This means that $x = 0$ or $x^2 = 2$, therefore the possible values for $x$ are 0, 2, and -2.
+
+    When $x < -2$, $\deriv{y}{x} < 0$, we can show this algebraically
+
+    \begin{align*}
+        x^3 - 4x & = (x-2)x(x+2)
+    \end{align*}
+
+    And so, if $x < -2$, then
+
+    $$
+        (x - 2) < x < (x + 2) < 0
+    $$
+
+    And therefore, the derivative must be negative, since we will have $x - 2$, which is negative, times $x$, which is negative, times $x + 2$ which is also negative. This means that the curve is decreasing.
+
+    When $- 2 < x < 0$, $\deriv{y}{x} > 0$. Using similar logic, we have that $x - 2, x < 0$, however, $x + 2 > 0$. Therefore, the derivative will in this case be a negative, times a negative, times a positive, which is a positive. This means that the curve is increasing.
+
+    When $0 < x < 2$, $\deriv{y}{x} < 0$. In this case, we have that $x - 2 < 0$, and $x, x + 2 > 0$, therefore, the derivate in that interval will be a negative, times a positive, times a positive, which is a negative number. This means that the curve is decreasing.
+
+    When $x > 2$, we have $x - 2, x, x + 2 > 0$, therefore, the derivative in this interval will be a positive, times a positive, times a positive, which is always a positive. This means that the curve is increasing.
+
+
+
+    \begin{figure}[!h]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                    title={Sketch of function $f(x) = \frac{x^4}{4} - 2x^2 + 4$},
+                    xlabel={$x$},
+                    ylabel={$f(x)$},
+                    xmin=-4, xmax=4,
+                    ymin=0, ymax=15,
+                    xtick={-4, -3, -2, -1, 0, 1, 2, 3, 4},
+                    ytick={0,5, 10, 15},
+                ]
+
+                \addplot[
+                    only marks,
+                    color=blue,
+                ]
+                coordinates {
+                        (0,4)(2, 0)(-2, 0)
+                    };
+
+            \end{axis}
+        \end{tikzpicture}
+
+    \end{figure}
+
+
 \end{homeworkProblem}
 
 \end{document}
