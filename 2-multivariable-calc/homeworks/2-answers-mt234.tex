@@ -1,0 +1,345 @@
+\documentclass[12pt]{article} % use the article class
+
+\input{../../preamble.tex} 
+\input{../class-specific.tex}
+
+\title{
+    \vspace{2in}
+        \textmd{\textbf{\classTitle}}\\
+    \vspace{1in}
+    \textmd{\textbf{Homework \#2}}\\
+    \vspace{1in}
+}
+
+\author{
+    \hmwkAuthorName\\
+    \hmwkStudentnum\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+% Problem 1
+\begin{homeworkProblem}
+    \hBox{
+        Are the following true, or false
+
+        \begin{enumerate}
+            \item There is no subset $A \subseteq \R^2$ such that $Bdy(A)$ contains exactly four points.
+            \item There is a subset $C \subseteq \R^3$ such that C is not the empty set and $Int(C)$ is the empty
+                  set.
+        \end{enumerate}
+    }
+
+    \subsection*{Part 1}
+
+    This statement is false. We can prove this by counter example.
+
+    Take $A = \mset{(0, 0), (1, 1), (2, 2), (3, 3)}$. $A$ has only 4 elements, an open ball with a center at any of those elements
+    will contain at least one point inside it (the center), as well as points outside it, meaning that they are boundary points.
+
+    \subsection*{Part 2}
+
+    This statement is true, an example would be $C = \mset{(1, 1, 1)}$. This set is not empty, and any open ball with center $(1, 1, 1)$ will contain points outside $C$, meaning that $(1, 1, 1)$ is not an interior point.
+
+    Therefore, there exists $C \subseteq \R^3$ where $Int(C) = \emptyset$
+
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 2
+\begin{homeworkProblem}
+    \hBox{
+        Suppose the directional derivative of $g(x, y)$ at $(1, 2)$ in the direction of $\vec{i} + \vec{j}$ is $2\sqrt{2}$
+        and the directional derivative of $g(x, y)$ at $(1, 2)$ in the direction of $-2\vec{j}$ is $-3$. Find the
+        directional derivative of $g(x, y)$ at $(1, 2)$ in the direction of $-\vec{i} - 2\vec{j}$
+    }
+
+    $$
+        \gradient g_{\mid (1, 2)} = \pderiv{g}{x} \vec{i} + \pderiv{g}{y} \vec{j}
+    $$
+
+    To make the solution clearer, let $a = \pderiv{g}{x}$, and $b = \pderiv{g}{y}$
+
+    First, let's find the unit vectors in the directions given:
+
+    $$
+        u = \frac{\vec{i} + \vec{j}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \vec{i} + \frac{1}{\sqrt{2}} \vec{j}
+    $$
+
+    $$
+        w = \frac{0 \vec{i} - 2 \vec{j}}{\sqrt{(-2)^2}} = 0 \vec{i} - 1 \vec{j}
+    $$
+
+    $$
+        z = \frac{- 1\vec{i} - 2 \vec{j}}{\sqrt{(-1)^2 + (-2)^2}} = - \frac{1}{\sqrt{5}} \vec{i} - \frac{2}{\sqrt{5}}
+    $$
+
+    We know that the gradient in the direction of $w$ is given by:
+
+    $$
+        (D_w g)_{\mid (1, 2)} = -3
+    $$
+
+    Therefore
+
+    $$
+        -3
+        = (a \vec{i} + b \vec{j}) \cdot (0\vec{i} - 1 \vec{j})
+        = -b
+        \implies 3 = b
+    $$
+
+    We also know that the gradient in the direction of $u$ is given by:
+
+    $$
+        (D_u g)_{\mid (1, 2)} = 2 \sqrt{2}
+    $$
+
+    Therefore
+
+    $$
+        2 \sqrt{2}
+        = (a \vec{i} + b \vec{j}) \cdot (\frac{1}{\sqrt{2}} \vec{i} + \frac{1}{\sqrt{2}} \vec{j})
+        = \frac{a}{\sqrt{2}} + \frac{b}{\sqrt{2}}
+        = \frac{a}{\sqrt{2}} + \frac{3}{\sqrt{2}}
+    $$
+
+    Now, we can solve for $a$
+
+    \begin{align*}
+        2 \sqrt{2} & = \frac{a}{\sqrt{2}} + \frac{3}{\sqrt{2}} \\
+        2 \cdot 2  & = a + 3                                   \\
+        4 - 3      & = a = 1
+    \end{align*}
+
+    And so now we now that
+
+    $$
+        \gradient g_{\mid (1, 2)} = 1 \vec{i} + 3 \vec{j}
+    $$
+
+    With this, we can now find the directional derivative of $g$ at $(1, 2)$ in the direction of $-\vec{i} - 2\vec{j}$
+
+
+    $$
+        (D_z g)_{\mid (1, 2)} = \gradient g_{\mid (1, 2)} \cdot \underline{w} = (\vec{i} + 3 \vec{j}) \cdot (- \frac{1}{\sqrt{5}} \vec{i} - \frac{2}{\sqrt{5}} \vec{j}) = - \frac{1}{\sqrt{5}} - \frac{3 \cdot 2}{\sqrt{5}} = - \frac{7}{\sqrt{5}}
+    $$
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 3
+\begin{homeworkProblem}
+    \subsection*{Part 1}
+    \hBox{
+        Suppose that $h(x) = \cos(y + x^2) + \sin(x - 2y^2)$, find the following:
+
+        $$
+            \pderiv{h}{x} \cm \pderiv{h}{y} \cm \pderivsq{h}{x} \cm \pderivsq{h}{y} \cm \frac{\partial^2h}{\partial x \partial y}
+        $$
+    }
+
+    For these differentials, I will use the following rules:
+
+    $$\pderiv{}{u} \cos(f(u)) = - f'(u) \sin(f(u)) \cm \pderiv{}{u} \sin(f(u)) = f'(u) \cos(f(u))$$
+    $$\pderiv{}{u} f(u)g(u) = f'(u) g(u) + f(u) g'(u)$$
+
+    And also
+
+    $$
+        \pderiv{}{x} y + x^2 = 2x \quad \pderiv{}{x} x - 2y^2 = 1
+    $$
+
+    $$
+        \pderiv{}{y} y + x^2 = 1 \quad \pderiv{}{y} x - 2y^2 = -4y
+    $$
+
+    \begin{align*}
+        \pderiv{h}{x}   & = \pderiv{}{x} \cos(y + x^2) + \pderiv{}{x} \sin(x - 2y^2) = - 2x \sin(y + x^2) + \cos(x - 2y^2) \\ \\ \\
+        \pderivsq{h}{x} & = \pderiv{}{x} \pderiv{h}{x} =\pderiv{}{x} (- 2x \sin(y + x^2) + \cos(x - 2y^2))                 \\
+                        & = -2 \sin(y + x^2) -4x^2 cos(y + x^2) - \sin(x - 2y^2)                                           \\ \\ \\
+        \pderiv{h}{y}   & = \pderiv{}{y} \cos(y + x^2) + \pderiv{}{y} \sin(x - 2y^2) = -\sin(y + x^2) - 4y \cos(x - 2y^2)  \\ \\ \\
+    \end{align*}
+
+    \begin{align*}
+        \pderivsq{h}{y}                           & = \pderiv{}{y} \pderiv{h}{y} =\pderiv{}{y} (-\sin(y + x^2) - 4y \cos(x - 2y^2))  \\
+                                                  & = - \cos(y + x^2) - 4 \cos(x - 2y^2) - 16y^2 sin(x - 2y^2)                       \\ \\ \\
+        \frac{\partial^2h}{\partial x \partial y} & = \pderiv{}{x} \pderiv{h}{y} = \pderiv{}{x} (-\sin(y + x^2) - 4y \cos(x - 2y^2)) \\
+                                                  & =-2x \cos(y + x^2) - 4y  \cos(x -2y^2)
+    \end{align*}
+    \pagebreak
+
+    \subsection*{Part 2}
+    \hBox{
+        Suppose that $z = 2u - 3w^2$, $u = e^{2r + 3s}$, $w = s - r^2$ find the following:
+
+        $$
+            \pderiv{z}{r} \cm \pderiv{z}{s}
+        $$
+    }
+
+    For these differentials, I will use the chain rule as follows:
+
+    $$\pderiv{}{a} e^{f(a, b)} = (\pderiv{}{a} f(a, b)) \cdot e^{f(a, b)}$$
+
+    $$\pderiv{}{a} (f(a, b))^2 = 2(f(a, b)) \cdot (\pderiv{}{a} f(a, b))$$
+
+
+    First, we will find the derivatives of $u$, and $w^2$:
+
+
+    $$\pderiv{}{r} e^{2r + 3s} = 2e^{2r + 3s}$$
+    $$\pderiv{}{s} e^{2r + 3s} = 3e^{2r + 3s}$$
+    $$\pderiv{}{r} (s - r^2)^2 = 2(s - r^2) (-2r) = -4r(s - r^2)$$
+    $$\pderiv{}{s} (s - r^2)^2 = 2(s - r^2) (1) = 2(s - r^2)$$
+
+    We can use the above derivatives to solve the question
+
+    \begin{align*}
+        \pderiv{z}{r} & = 2 \pderiv{u}{r} - 3 \pderiv{w^2}{r} = 2 \pderiv{}{r} e^{2r + 3s} - 3 \pderiv{}{r} (s - r^2)^2  \\
+                      & = 2 (2e^{2r + 3s}) - 3 (-4r(s - r^2))                                                            \\
+                      & = 4e^{2r + 3s} + 12 r (s - r^2)                                                                  \\ \\
+        \pderiv{z}{s} & = 2 \pderiv{u}{s} - 3 \pderiv{w^2}{s}  = 2 \pderiv{}{s} e^{2r + 3s} - 3 \pderiv{}{s} (s - r^2)^2 \\
+                      & = 2 (3e^{2r + 3s}) - 3 (2(s - r^2)) = 6e^{2r + 3s} - 6(s - r^2)                                  \\
+                      & = 6 (e^{2r + 3s} - s + r^2)
+    \end{align*}
+
+\end{homeworkProblem}
+\pagebreak
+
+
+% Problem 4
+\begin{homeworkProblem}
+    \hBox{
+        Suppose $f (x, y) = y^2 - \cos(y + x)$. Is f differentiable at every point in $\R^2$? Justify your answer.
+    }
+
+    We say that $f(x, y)$ is differentiable a point $(a, b)$ if $\pderiv{f}{x}_{\mid {a, b}}$ and $\pderiv{f}{y}_{\mid {a, b}}$ exist.
+
+    $$
+        \pderiv{f}{x} = \pderiv{}{x} y^2 - \pderiv{}{x} \cos(y + x) = \sin(y + x)
+    $$
+
+    Since $x, y \in \R$, $x + y \in \R$, this means that $f$ is differentiable at any point since $\sin(n)$ is defined for all $n \in \R$.
+
+    $$
+        \pderiv{f}{y} = \pderiv{}{y} y^2 - \pderiv{}{y} \cos(y + x) = 2y + \sin(y + x)
+    $$
+
+    This derivative is also differentiable at any point since $2y$ is defined for all $y \in \R$, and $sin(y + x)$ is also defined for all $x, y \in \R$
+
+    Because both $\pderiv{f}{x}$ and $\pderiv{f}{y}$ are differentiable at every $(x, y) \in \R^2$, we have shown that $f$ is differentiable at every point in $\R^2$
+
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 5
+\begin{homeworkProblem}
+    \subsection*{Part 1}
+    \hBox{
+        Find the directional derivative of $g(x, y, z) = x^3y^2 - e^{z}\sin(yx)$ at $(1, \frac{\pi}{2} , 0)$ in the
+        direction of $\vec{i} - 2\vec{j} + 3\vec{k}$.
+    }
+
+
+    Firstly, we will find the unit vector $u$ in the direction of $\vec{i} - 2\vec{j} + 3\vec{k}$. This is given by
+
+    $$
+        u
+        = \frac{\vec{i} - 2\vec{j} + 3\vec{k}}{\sqrt{1^2 + (-2)^2 + 3^2}}
+        = \frac{1}{\sqrt{14}}\vec{i} - \frac{2}{\sqrt{14}}\vec{j} + \frac{3}{\sqrt{14}}\vec{k}
+    $$
+
+    The directional derivative of $g$ in the direction of $\vec{i} - 2\vec{j} + 3\vec{k}$ at $(1, \frac{\pi}{2}, 0)$ is given by
+
+    $$
+        (D_{\underline{u}}f)_{\mid (1, \frac{\pi}{2}, 0)} = \gradient g_{\mid (1, \frac{\pi}{2}, 0)} \cdot \underline{u}
+    $$
+
+    Where
+
+    $$
+        \gradient g = \pderiv{g}{x} \vec{i} + \pderiv{g}{y} \vec{j} + \pderiv{g}{z} \vec{k}
+    $$
+
+    \begin{align*}
+        \pderiv{g}{x} & = 3x^2y^2 - e^zy\cos(yx) \\ \\
+        \pderiv{g}{y} & = 2x^3y - e^zx\cos(yx)   \\ \\
+        \pderiv{g}{z} & = - e^z\cos(yx)
+    \end{align*}
+
+
+    \begin{align*}
+        (D_{\underline{u}}f)_{\mid (1, \frac{\pi}{2}, 0)}
+         & = \gradient g_{\mid (1, \frac{\pi}{2}, 0)} \cdot \underline{u}                                                                                     \\
+         & = [(3x^2y^2 - e^zy\cos(yx)) \vec{i} + (2x^3y - e^zx\cos(yx)) \vec{j} + - e^z\cos(yx) \vec{k}]_{\mid (1, \frac{\pi}{2}, 0)} \cdot \underline{u}     \\
+         & = (\frac{3 \pi^2}{4} \vec{i}+ \pi \vec{j}- 1 \vec{k}) \cdot (\frac{1}{\sqrt{14}}\vec{i} - \frac{2}{\sqrt{14}}\vec{j} + \frac{3}{\sqrt{14}}\vec{k}) \\
+         & = \frac{\sqrt{14} ( 3\pi^2 -8\pi - 12)}{56}
+    \end{align*}
+
+    \subsection*{Part 2}
+    \hBox{
+        Find the directions in which $g(x, y) = 2y^2x - 4e^{yx} \sin x$ increases and decreases most
+        rapidly at $(0, 1)$. Also, at what rate does $g$ change in these directions?
+    }
+
+    It will most rapidly increase when the angle between the gradient of $g$ and $\underline{u}$ is $0$, and it will most rapidly decrease when it is $\pi$.
+
+    $$
+        \gradient g = \pderiv{g}{x} \vec{i} + \pderiv{g}{x} \vec{j}
+    $$
+
+    \begin{align*}
+        \pderiv{g}{x}
+         & = \pderiv{}{x} 2 y^2 x - 4 \pderiv{}{x} e^{yx} \sin{x}                       \\
+         & = 2 y^2 - 4 \pderiv{}{x} e^{yx} \sin{x}                                      \\
+         & = 2 y^2 - 4 ((\pderiv{}{x} e^{yx}) \sin{x} + e^{yx} (\pderiv{}{x} \sin{x}) ) \\
+         & = 2 y^2 - 4 (ye^{yx}  \sin{x} + e^{yx} \cos{x} )                             \\ \\
+        \pderiv{g}{y}
+         & = \pderiv{}{y} 2 y^2 x - 4 \pderiv{}{y} e^{yx} \sin{x}                       \\
+         & = 4yx - 4\sin{x} \pderiv{}{y} e^{yx}                                         \\
+         & = 4yx - 4\sin(x) x e^{yx}                                                    \\
+    \end{align*}
+
+    Therefore,
+
+    $$
+        \gradient g = (2 y^2 - 4 (ye^{yx}  \sin{x} + e^{yx} \cos{x})) \vec{i} + (4yx - 4\sin(x) x e^{yx}) \vec{j}
+    $$
+
+    Now, we can evaluate the gradient at $(0, 1)$
+
+    $$
+        \gradient g_{\mid (0, 1)} = (2(1)^2 - 4((1)e^0 sin(0) + e^0 cos(0))) \vec{i} + (4(1)(0) - 4 \sin(0) (0) e^{0}) \vec{j} = -2 \vec{i} + 0 \vec{j}
+    $$
+
+    The function will increase the most rapidly when $\underline{u}_{inc}$ is in the direction of the gradient evaluated at $(0, 1)$, meaning that $\underline{u}_{inc}$ is in the direction of $-2\vec{i} + 0 \vec{j}$.
+
+    Because $\underline{u}_{inc}$ is a unit vector, $\underline{u}_{inc} = \frac{-2\vec{i} + 0 \vec{j}}{2} = -1 \vec{i} + 0 \vec{j}$
+
+    The change in this direction can be calculated by
+
+    $$
+        (D_{u_{inc}}g_{\mid (0, 1)}) = \gradient g_{\mid (0, 1)} \cdot \underline{u}_{inc} = (-2 \vec{i} + 0 \vec{j}) \cdot (-1\vec{i} + 0 \vec{j}) = 2
+    $$
+
+    Similarly, it will decrease the most rapid when $\underline{u}_{dec}$ is in the direction of $- \gradient g_{\mid (0, 1)}$. In this case $\underline{u}_{dec} = - \frac{-2\vec{i} + 0 \vec{j}}{2} = 1 \vec{i} + 0 \vec{j}$
+
+    The change in this direction can be calculated by
+
+    $$
+        (D_{\underline{u}_{dec}}g_{\mid (0, 1)}) = \gradient g_{\mid (0, 1)} \cdot \underline{u}_{dec} = (-2 \vec{i} + 0 \vec{j}) \cdot (1\vec{i} + 0 \vec{j}) = -2
+    $$
+
+\end{homeworkProblem}
+\pagebreak
+
+
+
+
+\end{document}
