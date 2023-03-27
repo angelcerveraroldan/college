@@ -1,0 +1,427 @@
+\documentclass[12pt]{article} % use the article class
+
+\input{../../preamble.tex} 
+\input{../class-specific.tex}
+\newcommand*{\halfpi}{\frac{\pi}{2}}
+
+\newcommand\optim[2]{\xrightarrow{(#1)\times r_#2}}
+\newcommand\opadd[3]{\xrightarrow{r_#1{}+{} #2r_#3}}
+
+\rhead{Abstract algebra assignment 1}
+
+\title{
+    \vspace{2in}
+        \textmd{\textbf{\classTitle}}\\
+    \vspace{1in}
+    \textmd{\textbf{Homework \#2}}\\
+    \vspace{1in}
+}
+
+\author{
+    \hmwkAuthorName\\
+    \hmwkStudentnum\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+
+% Problem 1
+\begin{homeworkProblem}
+
+    \hBox{
+        Find the basis of the following subspace of $\R^4$:
+
+        $$
+            S_1 := \mset{(x_1, x_2, x_3, x_4) \in \R^4 \mid  x_1 - 2x_2 + x_4 = 0 , x_3 + x_4 = 0}
+        $$
+
+        $$
+            S_2 := span(\mset{
+                \begin{pmatrix} 1 \\ 0 \\ 1 \\ 0 \end{pmatrix},
+                \begin{pmatrix} 5 \\ 6 \\ 5 \\ -6 \end{pmatrix},
+                \begin{pmatrix} 1 \\ 2 \\ 1 \\ -2 \end{pmatrix},
+                \begin{pmatrix} 3 \\ -4 \\ 3 \\ 4 \end{pmatrix}
+            })
+        $$
+
+        Also, find the dimension of $S_1 \cap S_2$
+    }
+
+
+    \subsection*{Part 1}
+
+    \begin{align*}
+        x_1 - 2x_2 + x_4 & = 0 \implies x_4 = 2x_2 - x_1 \\
+        x_3 + x_4        & = 0 \implies x_3 = - x_4      \\
+    \end{align*}
+
+    And so, given $(x_1, x_2, x_3, x_4)$ can be written as $(x_1, x_2, -(2x_2 - x_1), 2x_2 - x_1)$
+
+    Therefore
+
+    $$
+        S_1 = span(\mset{
+            \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0  \end{pmatrix},
+            \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0  \end{pmatrix},
+            \begin{pmatrix} 0 \\ 0 \\ 1 \\ -1 \end{pmatrix}
+        })
+    $$
+
+    meaning that a basis for $S_1$ is
+
+    $$
+        \mset{
+            \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0  \end{pmatrix},
+            \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0  \end{pmatrix},
+            \begin{pmatrix} 0 \\ 0 \\ 1 \\ -1 \end{pmatrix}
+        }
+    $$
+
+    \pagebreak
+
+    \subsection*{Part 2}
+
+    To find the basis for $S_2$, we can put the given vectors into a matrix, and simplify it to Reduced Row Echelon Form:
+
+
+    \begin{align*}
+        \begin{bmatrix}
+            1 & 0  & 1 & 0  \\
+            5 & 6  & 5 & -6 \\
+            1 & 2  & 1 & -2 \\
+            3 & -4 & 3 & 4  \\
+        \end{bmatrix}
+        \xrightarrow{r_2 - 5r_1}
+         & \begin{bmatrix}
+               1 & 0  & 1 & 0  \\
+               0 & 6  & 0 & -6 \\
+               1 & 2  & 1 & -2 \\
+               3 & -4 & 3 & 4  \\
+           \end{bmatrix} \\
+        \xrightarrow{r_3 - r_1}
+         & \begin{bmatrix}
+               1 & 0  & 1 & 0  \\
+               0 & 6  & 0 & -6 \\
+               0 & 2  & 0 & -2 \\
+               3 & -4 & 3 & 4  \\
+           \end{bmatrix} \\
+        \xrightarrow{r_4 - 3r_1}
+         & \begin{bmatrix}
+               1 & 0  & 1 & 0  \\
+               0 & 6  & 0 & -6 \\
+               0 & 2  & 0 & -2 \\
+               0 & -4 & 0 & 4  \\
+           \end{bmatrix} \\
+        \xrightarrow{1/6 r_2 \text{, }  1/2 r_3 \text{, } -1/4r_4}
+         & \begin{bmatrix}
+               1 & 0 & 1 & 0  \\
+               0 & 1 & 0 & -1 \\
+               0 & 1 & 0 & -1 \\
+               0 & 1 & 0 & -1 \\
+           \end{bmatrix}  \\
+        \xrightarrow{r_3 - r_2 \text{, } r_4 - r_2}
+         & \begin{bmatrix}
+               1 & 0 & 1 & 0  \\
+               0 & 1 & 0 & -1 \\
+               0 & 0 & 0 & 0  \\
+               0 & 0 & 0 & 0  \\
+           \end{bmatrix}  \\
+    \end{align*}
+
+    Therefore:
+
+    $$
+        S_2 = span(\mset{
+            \begin{pmatrix} 1 \\ 0 \\ 1 \\ 0 \end{pmatrix},
+            \begin{pmatrix} 0 \\ 1 \\ 0 \\ -1 \end{pmatrix}
+        })
+    $$
+
+    meaning that a basis for $S_2$ is
+
+    $$
+        \mset{
+            \begin{pmatrix} 1 \\ 0 \\ 1 \\ 0 \end{pmatrix},
+            \begin{pmatrix} 0 \\ 1 \\ 0 \\ -1 \end{pmatrix}
+        }
+    $$
+
+    \subsection*{Part 3}
+
+    Any element in $S_1 \cap S_2$ must be in $S_1$ and in $S_2$, therefore, $x \in S_2$ can be written as $(a, b, a, -b)$, also, $x \in S_1 \therefore x = (n, m, c, -c)$
+    This means that $a = -(-b) = b$, therefore, $x = (b, b, b, -b)$.
+
+    Therefore
+    $$
+        S_1 \cap S_2 = span(\mset{
+            \begin{pmatrix} 1 \\ 1 \\ 1 \\ -1 \end{pmatrix}
+        })
+    $$
+
+    And so, the dimension of $S_1 \cap S_2$ is 1.
+\end{homeworkProblem}
+\pagebreak
+
+
+% Problem 2
+\begin{homeworkProblem}
+    \hBox {
+        $$
+            S := \mset{P \in \R_n[X] \mid P(1) = 0}
+        $$
+
+        Show that $S$ is a subspace of $\R_n[X]$, find a basis for $S$, and determine its dimension.
+    }
+
+    Given $A, B \in S$, and $\lambda \in \R$, to show that $S$ is a subspace of $\R_n[X]$, we need to prove:
+
+    \begin{enumerate}
+        \item $(A + B)(x) = A(x) + B(x)$
+        \item $(\lambda A)(x) = \lambda A(x)$
+    \end{enumerate}
+
+    By the definition of the polynomials, $\forall P, Q \in \R_n[X]$, $(P + Q)(x) = P(x) + Q(x)$, and $\forall \alpha \in \R$, $(\alpha P)(x) = \alpha P(x)$
+
+    $$
+        (A + B)(1) = A(1) + B(1) = 0 + 0 = 0
+    $$
+
+
+    $$
+        (\lambda A)(x) = \lambda A(x) = \lambda 0 = 0
+    $$
+
+    And so this shows that for any $A, B \in S$, $A + B \in S$, and for any $\lambda \in \R$, $\lambda A \in S$, therefore, $S$ is a subspace of $\R_n[X]$.
+
+    The basis of $\R_n[X]$ is given by $\mset{1, x, x^2, ..., x^n}$. However, since $A(1) = 0$, we know that:
+
+    $$
+        A = a_0 + a_1 x^1 + a_2 x^2 + ... + a_n x^n
+    $$
+
+    $$
+        A(1) = a_0 + a_2 + ... + a_n = 0 \implies a_0 = - (a_1 + ... + a_n)
+    $$
+
+    Therefore, $A$ can be written as $a_1(x - 1) + a_2(x^2 - 1) + ... + a_n(x^n - 1) = (a_1 x - a_1) + ... + (a_n x^n - a_n)$
+
+    This shows that $A = span(\mset{x - 1, x^2 - 1, ..., x^n - 1})$, therefore, $dim(S) = n$
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 3
+\begin{homeworkProblem}
+
+    \hBox{
+        Show that
+
+        $$
+            M_{n \times n}(\R) = Sym_{n}(\R) \oplus Skew_{n}(\R)
+        $$
+    }
+
+    To prove the above, we need to show that every $A \in M_{n \times n}(\R)$ can be written as a unique sum of $B + C$, $B \in Sym_{n}(\R)$, $C \in Skew_{n}(\R)$
+
+    Note: By the definition, $b_{ij} = b_{ji}$, and $c_{ij} = - c_{ji}$ this also shows that $c_{ii} = 0$ since $c_{ii} = -c_{ii}$.
+
+    We can find the matrices $A$ and $B$ algebraically
+
+    \begin{align*}
+        a_{ij} & = b_{ij} + c_{ij}                   \\
+        a_{ji} & = b_{ji} + c_{ji} = b_{ij} - c_{ij} \\
+    \end{align*}
+
+    Since we need to solve for 2 variables ($b_{ij}$, and $c_{ij}$) with two given values ($a_{ij}$, and $a_{ji}$), there is only one unique solution.
+
+    \begin{align*}
+        b_{ij} & = a_{ji} + c_{ij}                                                       \\
+        a_{ij} & = a_{ji} + c_{ij} + c_{ij} = a_{ji} + 2 c_{ij}                          \\
+        c_{ij} & = \frac{a_{ij} - a_{ji}}{2}, \quad c_{ji} = - \frac{a_{ij} - a_{ji}}{2} \\
+        b_{ij} & = b_{ji} = a_{ji} + c_{ij} = a_{ji} + \frac{a_{ij} - a_{ji}}{2}
+    \end{align*}
+
+    Since every element in $B$ and every element in $C$ can be written in one way in terms of the elements of $A$, we know that the sum is unique.
+
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 4
+\begin{homeworkProblem}
+    \hBox{
+        Which of the following is a linear functional
+
+        \begin{enumerate}
+            \item on vector space $\R[X]$ over $\R$: $f(P) = 3P(0) + 5P(1)$
+            \item on vector space $\R^3$ over $\R$: $f(x_1, x_2, x_3) = x_1x_2 + x_2x_3 + x_3x_1$
+            \item on vector space $\R^3$ over $\R$: $f(x_1, x_2, x_3) = \abs{x_1} + \abs{x_2} + \abs{x_3}$
+            \item on vector space $\Z_5^3$ over $\Z_5$: $f(x_1, x_2, x_3) = x_1^5 + x_2^5 + x_3^5$
+        \end{enumerate}
+    }
+
+    Definition: A function $f$ is linear functional iff:
+
+    $$
+        f(a + b) = f(a) + f(b)
+    $$
+
+    $$
+        f(\lambda a) = \lambda f(a)
+    $$
+
+    \subsection*{Part 1}
+
+    Take $P, Q \in \R[X]$, and $\lambda \in \R$, then:
+
+    \begin{align*}
+        f(P + Q)
+         & = 3(P + Q)(0) + 5(P + Q)(1)         \\
+         & = 3(P(0) + Q(0)) + 5(P(1) + Q(1))   \\
+         & = 3P(0) + 3Q(0) + 5P(1) + 5Q(1)     \\
+         & = 3P(0) + 5P(1) + 3Q(0) + 5Q(1)     \\
+         & = f(P) +f(Q)                        \\ \\
+        f(\lambda P)
+         & = 3(\lambda P)(0) + 5(\lambda Q)(1) \\
+         & = 3\lambda P(0) + 5 \lambda Q(1)    \\
+         & = \lambda (3P(0) + 5Q(1))           \\
+         & = \lambda f(P)                      \\
+    \end{align*}
+
+    This shows that the function $f(P) = 3P(0) + 5P(1)$ is linear functional
+
+
+    \subsection*{Part 2}
+
+    We can prove that $f(x_1, x_2, x_3) = x_1x_2 + x_2x_3 + x_3x_1$ is not linear functional by contradiction:
+
+
+    If $f$ were linear functional, then $- f(x_1, x_2, x_3) = f(-x_1, -x_2, -x_3)$, however:
+
+    $$
+        f(-x_1, -x_2, -x_3)  = (-x_1)(-x_2) + (-x_2)(-x_3) + (-x_3)(-x_1) = x_1 x_2 + x_2 x_ 3 + x_3 x_1 = f(x_1, x_2, x_3)
+    $$
+
+    And since $f(-x_1, -x_2, -x_3) = f(x_1, x_2, x_3)$, then $f(-x_1, -x_2, -x_3) \not = - f(x_1, x_2, x_3)$, meaning that $f$ is not linear functional.
+
+    \subsection*{Part 3}
+
+    We can show $f(x_1, x_2, x_3) = \abs{x_1} + \abs{x_2} + \abs{x_3}$ is not linear functional by example.
+
+    $f(1, 1, 1) = 3$, if $f$ were linear functional, then $- f(1, 1, 1) = f(-1, -1, -1) = -3$, however, $f(-1, -1, -1) = 3 \not = -3$.
+
+    Therefore,$f(\lambda x) \not = \lambda f(x)$ for all $x$, which means that $f$ is not linear functional.
+
+    \subsection*{Part 4}
+
+    $f(x_1, x_2, x_3) = x_1^5 + x_2^5 + x_3^5$ is linear functional.
+
+    \begin{align*}
+        f(\lambda x_1, \lambda x_2, \lambda x_3)
+         & = (\lambda x_1)^5 + (\lambda x_2)^5 + (\lambda x_3)^5 &  & \mod{5} \\
+         & = \lambda^5 x_1^5 + \lambda^5 x_2^5 + \lambda^5 x_3^5 &  & \mod{5} \\
+         & = \lambda^5 (x_1^5 + x_2^5 + x_3^5)                   &  & \mod{5} \\
+         & = \lambda (x_1^5 + x_2^5 + x_3^5)                     &  & \mod{5} \\
+    \end{align*}
+
+    Note: $(\lambda^5 = \lambda) \mod{5}$ we can prove this by showing all possible values for $\lambda \in \Z_5$
+
+    \begin{align*}
+        1^5 & = 1 \mod{5}        &  & 2^5 = 32 = 2 \mod{5}   \\
+        3^5 & = 243 = 3 \mod{5}  &  & 4^5 = 1024 = 4 \mod{5} \\
+        5^5 & = 3125 = 0 \mod{5}
+    \end{align*}
+
+    Note: $(a + b)^5 = a^5 + 5 a^4 b + 10 a^3 b^2 + 10 a^2 b^3 + 5 a b^4 + b^5 = a^5 + b^5 \mod{5}$
+
+    \begin{align*}
+        f(x_1 + y_1, x_2 + y_2, x_3  + y_3)
+         & = (x_1 + y_1)^5 + (x_2 + y_2)^5 + (x_3  + y_3)^5 &  & \mod{5} \\
+         & = x_1^5 + y_1^5 + x_2^5 + y_2^5 + x_3^5 + y_3^5  &  & \mod{5} \\
+         & = x_1^5 + x_2^5 + x_3^5 + y_1^5 + y_2^5 + y_3^5  &  & \mod{5} \\
+         & = f(x_1, x_2, x_3) + f(y_1, y_2, y_3)
+    \end{align*}
+
+\end{homeworkProblem}
+
+\pagebreak
+
+% Problem 5
+\begin{homeworkProblem}
+
+    \subsection*{Part 1}
+    Poof by contradiction:
+
+    $S$ is linearly dependent if $\exists \lambda$'s $\in \Q$ (not all 0), st:
+
+    $$
+        \sum_{i = 1}^{\infty} \lambda_i log(p_i) = 0
+    $$
+
+    (assume that those lambdas exist)
+
+    Note: $log(x) = 0 \implies x = 1$
+
+    \begin{align*}
+        \sum_{i = 1}^{\infty} \lambda_i log(p_i)
+         & =\sum_{i = 1}^{\infty} log(p_i^{\lambda_i})  \\
+         & = log(\sum_{i = 1}^{\infty} p_i^{\lambda_i}) \\
+         & = 0                                          \\
+        \sum_{i = 1}^{\infty} p_i^{\lambda_i}
+         & = 1
+    \end{align*}
+
+    But for the sum to be equal to one, $\lambda_i = 0$ for all values of $i$, this shows that $S$ is not linearly dependent, meaning that it is linearly independent.
+
+    \subsection*{Part 2}
+
+    We showed that $S$ is linearly independent, therefore, if we assume that $\R_\Q$ is finite dimensional, with a dimension of $n$, then
+    the first $n$ elements of $S$ would be a basis for $\R_\Q$.
+
+    However, the $n + 1$ element of $S$ is also an element of $\R_\Q$, and it cannot be written in terms of the firs $n$ elements that we chose (because S is linearly independent),
+    therefore, those elements cannot be a basis.
+
+    This is a contradiction, showing that $\R_\Q$ is not finite dimensional.
+
+\end{homeworkProblem}
+\pagebreak
+
+% Problem 6
+\begin{homeworkProblem}
+
+    \hBox{
+        Let $V$ be a vector space over a field $\F$, and suppose that
+        $f, g \in V^*$ are such that $$g(x) = 0 \iff f(x) = 0$$ %% Should this be a one way implicatoin ?
+    }
+
+    Take $x_0 \in V$ such that $g(x_0) \not = 0$ (if no such $x_0$ exists, then $g(x) = 0$ for all x, and therefore, $f = g$, so $\lambda = 1$). Define $n := g(x_0)$, and $m := f(x_0)$.
+    We can rewrite $m$ in terms of $n$: $m = (mn^{-1}) n$, let $k = m n^{-1} \in \F$. Therefore, $n = g(x_0)$, $kn = f(x_0)$.
+
+    First, we need to show that $\forall x \in V$, $\exists \alpha$ such that $g(x + \alpha x_0) = 0$ we can do so algebraically:
+
+    Since $g$ is linear, $g(0) = 0$ (*), therefore, find $\alpha$ such that $x - \alpha x_0 = 0 \implies \alpha = x x_0^{-1}$
+
+    \begin{align*}
+        g(x - \alpha x_0)    & = 0             \\
+        g(x) - \alpha g(x_0) & =  0            \\
+        g(x)                 & = \alpha g(x_0) \\
+                             & = \alpha n      \\ \\
+        f(x - \alpha x_0)    & =0              \\
+        f(x) - \alpha f(x_0) & =0              \\
+        f(x)                 & = \alpha f(x_0) \\
+                             & = \alpha kn     \\
+                             & = k \alpha n    \\
+                             & = k g(x)        \\
+    \end{align*}
+
+    Let $\lambda = k$, and we have proven that there exists $\lambda$ such that $f = \lambda g$
+
+
+    (*) Take $t$ to be a linear functional, then $f(0) = 0$. This can be shown as follows: $f(x + 0) = n = f(x)$, $f(x) + f(0) = n$
+\end{homeworkProblem}
+
+\end{document}
